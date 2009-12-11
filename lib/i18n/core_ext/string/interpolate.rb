@@ -84,7 +84,7 @@ if RUBY_VERSION < '1.9'
             $3 ? sprintf("%#{$3}", args[key]) : args[key]
           end
         end
-      elsif self =~ INTERPOLATION_PATTERN
+      elsif self.gsub(/%%/, "%") =~ INTERPOLATION_PATTERN
         raise ArgumentError.new('one hash required')
       else
         result = gsub(/%([{<])/, '%%\1')

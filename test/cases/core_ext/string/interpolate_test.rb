@@ -83,6 +83,10 @@ class I18nCoreExtStringInterpolationTest < Test::Unit::TestCase
     assert_equal("%{num} %<num>d", "%%{num} %%<num>d" % {:num => 1})
   end
 
+  define_method "test: % acts as escape character in String interpolation without hash given" do
+    assert_equal "5%", "%d%%" % 5
+  end
+
   def test_sprintf_mix_unformatted_and_formatted_named_placeholders
     assert_equal("foo 1.000000", "%{name} %<num>f" % {:name => "foo", :num => 1.0})
   end
